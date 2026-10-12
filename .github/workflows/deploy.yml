@@ -1,1 +1,48 @@
+name: Deploy MickOS
 
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Zugangsdaten aus Secrets als Hash einbauen
+        env:
+          OS_USER: ${{ secrets.OS_USER }}
+          OS_PASS: ${{ secrets.OS_PASS }}
+          OS_SALT: ${{ secrets.OS_SALT }}
+        run: |
+          node -e "
+          const c=require('crypto'),fs=require('fs');
+          const {OS_USER:u,OS_PASS:p,OS_SALT:s}=process.env;
+          if(!u||!p||!s){console.error('Secret fehlt');process.exit(1)}
+          const h=c.pbkdf2Sync(u.trim().toLowerCase()+':'+p,s,150000,32,'sha256').toString('hex');
+          const html=fs.readFileSync('index.html','utf8').split('__AUTH_HASH__').join(h).split('__AUTH_SALT__').join(s);
+          fs.mkdirSync('dist');fs.writeFileSync('dist/index.html',html);
+          "
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.d.outputs.page_url }}
+    steps:
+      - id: d
+        uses: actions/deploy-pages@v4
