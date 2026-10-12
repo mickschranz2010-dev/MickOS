@@ -2,7 +2,7 @@
 <html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>MickOS</title>
 <style>
-:root{--ac:#5ee6c0;--glass:rgba(20,22,42,.86);--tx:#eef0fa;--mu:#9aa0c0;--ln:rgba(255,255,255,.1)}
+:root{--ac:#3b7be8;--glass:rgba(20,22,42,.86);--tx:#eef0fa;--mu:#9aa0c0;--ln:rgba(255,255,255,.1)}
 *{box-sizing:border-box}
 html,body{height:100%;margin:0;overflow:hidden;font:14px/1.45 "Segoe UI",system-ui,sans-serif;color:var(--tx);background:#10122a}
 button,input,select,textarea{font:inherit;color:inherit}
@@ -64,16 +64,66 @@ textarea.np{flex:1;resize:none;border:0;background:rgba(0,0,0,.25);padding:10px;
 .sw{display:inline-block;width:28px;height:28px;border-radius:50%;border:2px solid var(--ln);margin-right:6px}
 @media (prefers-reduced-motion:no-preference){.win{animation:pop .12s ease-out}@keyframes pop{from{transform:scale(.97);opacity:0}}}
 @media (max-width:600px){.win{width:96vw!important;left:2vw!important}}
+
+/* ===== Retro-Modern: Bevel-Rahmen wie Windows 98/2000, flache Farben und runde Ecken wie heute ===== */
+:root{--face:#d9dce3;--hi:#fff;--sh:#6b7080;--ink:#1a1d2b}
+.wall{background:linear-gradient(135deg,#0c5a66,#13828f 55%,#1d4e89)}
+.ico{color:#fff;text-shadow:0 1px 3px rgba(0,0,0,.7)}
+.ico:hover,.ico:focus-visible{background:rgba(255,255,255,.18);outline:1px dotted #fff}
+.bv,.card,.win,#bar,#menu,.tb button,.bar2 button,.sm,.btn,.calc button,.tk,#start{background:var(--face);color:var(--ink)}
+.win{--tx:var(--ink);--mu:#555b70;--ln:rgba(0,0,0,.18);color:var(--ink);padding:3px;border:2px solid;border-color:var(--hi) var(--sh) var(--sh) var(--hi);border-radius:7px;backdrop-filter:none;box-shadow:1px 1px 0 #2b2f3d,0 14px 34px rgba(0,0,0,.4)}
+.tb{background:linear-gradient(90deg,color-mix(in srgb,var(--ac) 55%,#0a1330),var(--ac));color:#fff;border-radius:4px;padding:4px 6px}
+.tb button,.bar2 button,.sm,.btn,.calc button{border:2px solid;border-color:var(--hi) var(--sh) var(--sh) var(--hi);border-radius:3px;color:var(--ink)}
+.tb button{width:22px;height:20px;padding:0;line-height:1;font-size:12px}
+.tb button:hover,.bar2 button:hover,.sm:hover,.calc button:hover{background:#eceef4}
+.tb button:active,.bar2 button:active,.sm:active,.btn:active,.calc button:active{border-color:var(--sh) var(--hi) var(--hi) var(--sh)}
+.tb .x:hover{background:#e5484d;color:#fff}
+.body{background:#eef0f5;color:var(--ink);margin-top:3px;border:2px solid;border-color:var(--sh) var(--hi) var(--hi) var(--sh)}
+.term{color:#d8f5e8;background:#0f1220}.term .pr{color:#7dffcf}
+textarea.np{background:#fff;color:#111}
+.bar2{background:var(--face);border-bottom:1px solid #b3b8c6}
+.fi:hover{background:#cfe0ff}
+.calc .d{background:#fff;color:#111;border:2px solid;border-color:var(--sh) var(--hi) var(--hi) var(--sh);border-radius:3px}
+.calc .op{background:color-mix(in srgb,var(--ac) 30%,#fff)}
+.win select{background:#fff;color:#111;border:2px solid;border-color:var(--sh) var(--hi) var(--hi) var(--sh);padding:4px}
+.sw{border:2px solid var(--ink)}
+/* Taskleiste */
+#bar{height:44px;padding:3px 6px;gap:6px;border-top:2px solid var(--hi);box-shadow:0 -1px 0 var(--sh);backdrop-filter:none}
+#start{display:flex;align-items:center;gap:8px;height:34px;padding:0 14px 0 10px;font-weight:700;font-size:15px;border:2px solid;border-color:var(--hi) #2b2f3d #2b2f3d var(--hi);border-radius:4px}
+#start::before{content:"";width:16px;height:16px;background:linear-gradient(#ff5a36,#ff5a36) 0 0/7px 7px,linear-gradient(#5ec45a,#5ec45a) 9px 0/7px 7px,linear-gradient(#3b8cff,#3b8cff) 0 9px/7px 7px,linear-gradient(#ffc83b,#ffc83b) 9px 9px/7px 7px;background-repeat:no-repeat}
+#start:active{border-color:#2b2f3d var(--hi) var(--hi) #2b2f3d}
+.sep{width:2px;height:28px;border-left:1px solid var(--sh);border-right:1px solid var(--hi)}
+.tk{height:34px;border:2px solid;border-color:var(--hi) var(--sh) var(--sh) var(--hi);border-radius:3px;max-width:170px;padding:0 10px}
+.tk.on{border-color:var(--sh) var(--hi) var(--hi) var(--sh);background:repeating-conic-gradient(#eef0f5 0 25%,#dfe2ea 0 50%) 0 0/4px 4px;font-weight:700}
+#clock{align-self:stretch;display:flex;flex-direction:column;justify-content:center;padding:0 12px;color:var(--ink);line-height:1.15;border:2px solid;border-color:var(--sh) var(--hi) var(--hi) var(--sh);border-radius:3px;font-size:13px}
+#clock small{color:#555b70;font-size:11px}
+#menu{width:250px;padding:3px 3px 3px 38px;border:2px solid;border-color:var(--hi) #2b2f3d #2b2f3d var(--hi);border-radius:6px;backdrop-filter:none;box-shadow:3px 3px 0 rgba(0,0,0,.35)}
+#menu::before{content:"MickOS";position:absolute;left:3px;top:3px;bottom:3px;width:30px;display:flex;align-items:flex-end;justify-content:center;padding-bottom:10px;writing-mode:vertical-rl;transform:rotate(180deg);font-weight:700;font-size:18px;letter-spacing:1px;color:#fff;background:linear-gradient(0deg,var(--ac),#0a1330);border-radius:3px}
+#menu button{color:var(--ink);padding:9px 10px}
+#menu button:hover{background:var(--ac);color:#fff}
+#menu hr{border-top:1px solid var(--sh);border-bottom:1px solid var(--hi);margin:4px 0}
+/* Anmeldefenster */
+.card{width:min(380px,92vw);padding:3px;border:2px solid;border-color:var(--hi) #2b2f3d #2b2f3d var(--hi);border-radius:7px;backdrop-filter:none;box-shadow:1px 1px 0 #2b2f3d,0 20px 50px rgba(0,0,0,.45)}
+.ltb{cursor:default}
+.lbody{display:grid;gap:10px;padding:16px 16px 12px;background:#eef0f5;margin-top:3px;border:2px solid;border-color:var(--sh) var(--hi) var(--hi) var(--sh)}
+.hero{display:flex;gap:14px;align-items:center;margin-bottom:4px}
+.av{width:54px;height:54px;display:grid;place-items:center;font-size:30px;background:#fff;border:2px solid;border-color:var(--sh) var(--hi) var(--hi) var(--sh);border-radius:4px}
+.card h1{font-size:22px;margin:0;color:var(--ink)}.card p{margin:2px 0 0;color:#555b70}
+.card label{display:grid;gap:4px;font-size:12px;color:var(--ink)}
+.card input{width:100%;margin:0;padding:8px 10px;background:#fff;color:#111;border:2px solid;border-color:var(--sh) var(--hi) var(--hi) var(--sh);border-radius:3px}
+.card .btn{padding:9px;font-weight:700;margin-top:4px}
+.err{color:#c0202f;margin:0}
 </style></head><body>
 <div class="wall" id="wall"></div>
 <div id="login"><form class="card" id="lf" autocomplete="off">
-<h1>MickOS</h1><p>Melde dich an, um fortzufahren.</p>
-<input id="u" placeholder="Benutzername" autocomplete="username" required>
-<input id="p" type="password" placeholder="Passwort" autocomplete="current-password" required>
-<button class="btn" id="lb">Anmelden</button><div class="err" id="le" role="alert"></div></form></div>
+<div class="tb ltb"><span>🔒</span><b>MickOS – Anmelden</b></div>
+<div class="lbody"><div class="hero"><div class="av">👤</div><div><h1>MickOS</h1><p>Gib deine Zugangsdaten ein.</p></div></div>
+<label>Benutzername<input id="u" autocomplete="username" required></label>
+<label>Passwort<input id="p" type="password" autocomplete="current-password" required></label>
+<button class="btn" id="lb">Anmelden</button><div class="err" id="le" role="alert"></div></div></form></div>
 <div id="os" hidden>
 <div id="desk"><div class="icons" id="icons"></div></div>
-<div id="bar"><button id="start" aria-haspopup="true">MickOS</button><div id="tasks"></div><div id="clock"></div></div>
+<div id="bar"><button id="start" aria-haspopup="true">Start</button><span class="sep"></span><div id="tasks"></div><div id="clock"></div></div>
 <div id="menu" hidden></div>
 </div>
 <script>
@@ -212,12 +262,12 @@ settings:{t:"Einstellungen",i:"⚙️",w:420,h:360,run(b){
  const s=el("div","set",`<div><b>Akzentfarbe</b><br><br><div id="sw"></div></div>
  <div><b>Hintergrund</b><br><br><select id="wp" aria-label="Hintergrund"><option value="">Dämmerung</option><option value="w2">Ozean</option><option value="w3">Nebel</option><option value="w4">Schiefer</option></select></div>
  <div><button class="sm" id="rs">Dateien zurücksetzen</button> <button class="sm" id="lo">Abmelden</button></div>`);b.append(s);
- ["#5ee6c0","#ffb454","#7aa2ff","#ff7a90","#c792ea"].forEach(c=>{const x=el("button","sw");x.style.background=c;x.title=c;x.onclick=()=>{store.set("ac",c);theme()};$("#sw",s).append(x)});
+ ["#3b7be8","#e8843b","#2fae7a","#d9487a","#8a5ad8"].forEach(c=>{const x=el("button","sw");x.style.background=c;x.title=c;x.onclick=()=>{store.set("ac",c);theme()};$("#sw",s).append(x)});
  $("#wp",s).value=store.get("wp","");$("#wp",s).onchange=e=>{store.set("wp",e.target.value);theme()};
  $("#rs",s).onclick=()=>{if(confirm("Alle Dateien löschen?")){localStorage.removeItem("mickos.fs");location.reload()}};$("#lo",s).onclick=logout;
 }}
 };
-function theme(){document.documentElement.style.setProperty("--ac",store.get("ac","#5ee6c0"));$("#wall").className="wall "+store.get("wp","")}
+function theme(){document.documentElement.style.setProperty("--ac",store.get("ac","#3b7be8"));$("#wall").className="wall "+store.get("wp","")}
 
 /* ---------- Desktop ---------- */
 function boot(){
