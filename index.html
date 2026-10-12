@@ -65,58 +65,64 @@ textarea.np{flex:1;resize:none;border:0;background:rgba(0,0,0,.25);padding:10px;
 @media (prefers-reduced-motion:no-preference){.win{animation:pop .12s ease-out}@keyframes pop{from{transform:scale(.97);opacity:0}}}
 @media (max-width:600px){.win{width:96vw!important;left:2vw!important}}
 
-/* ===== Retro-Modern: Bevel-Rahmen wie Windows 98/2000, flache Farben und runde Ecken wie heute ===== */
-:root{--face:#d9dce3;--hi:#fff;--sh:#6b7080;--ink:#1a1d2b}
-.wall{background:linear-gradient(135deg,#0c5a66,#13828f 55%,#1d4e89)}
-.ico{color:#fff;text-shadow:0 1px 3px rgba(0,0,0,.7)}
-.ico:hover,.ico:focus-visible{background:rgba(255,255,255,.18);outline:1px dotted #fff}
-.bv,.card,.win,#bar,#menu,.tb button,.bar2 button,.sm,.btn,.calc button,.tk,#start{background:var(--face);color:var(--ink)}
-.win{--tx:var(--ink);--mu:#555b70;--ln:rgba(0,0,0,.18);color:var(--ink);padding:3px;border:2px solid;border-color:var(--hi) var(--sh) var(--sh) var(--hi);border-radius:7px;backdrop-filter:none;box-shadow:1px 1px 0 #2b2f3d,0 14px 34px rgba(0,0,0,.4)}
-.tb{background:linear-gradient(90deg,color-mix(in srgb,var(--ac) 55%,#0a1330),var(--ac));color:#fff;border-radius:4px;padding:4px 6px}
-.tb button,.bar2 button,.sm,.btn,.calc button{border:2px solid;border-color:var(--hi) var(--sh) var(--sh) var(--hi);border-radius:3px;color:var(--ink)}
-.tb button{width:22px;height:20px;padding:0;line-height:1;font-size:12px}
-.tb button:hover,.bar2 button:hover,.sm:hover,.calc button:hover{background:#eceef4}
-.tb button:active,.bar2 button:active,.sm:active,.btn:active,.calc button:active{border-color:var(--sh) var(--hi) var(--hi) var(--sh)}
-.tb .x:hover{background:#e5484d;color:#fff}
-.body{background:#eef0f5;color:var(--ink);margin-top:3px;border:2px solid;border-color:var(--sh) var(--hi) var(--hi) var(--sh)}
-.term{color:#d8f5e8;background:#0f1220}.term .pr{color:#7dffcf}
-textarea.np{background:#fff;color:#111}
-.bar2{background:var(--face);border-bottom:1px solid #b3b8c6}
-.fi:hover{background:#cfe0ff}
-.calc .d{background:#fff;color:#111;border:2px solid;border-color:var(--sh) var(--hi) var(--hi) var(--sh);border-radius:3px}
-.calc .op{background:color-mix(in srgb,var(--ac) 30%,#fff)}
-.win select{background:#fff;color:#111;border:2px solid;border-color:var(--sh) var(--hi) var(--hi) var(--sh);padding:4px}
-.sw{border:2px solid var(--ink)}
-/* Taskleiste */
-#bar{height:44px;padding:3px 6px;gap:6px;border-top:2px solid var(--hi);box-shadow:0 -1px 0 var(--sh);backdrop-filter:none}
-#start{display:flex;align-items:center;gap:8px;height:34px;padding:0 14px 0 10px;font-weight:700;font-size:15px;border:2px solid;border-color:var(--hi) #2b2f3d #2b2f3d var(--hi);border-radius:4px}
-#start::before{content:"";width:16px;height:16px;background:linear-gradient(#ff5a36,#ff5a36) 0 0/7px 7px,linear-gradient(#5ec45a,#5ec45a) 9px 0/7px 7px,linear-gradient(#3b8cff,#3b8cff) 0 9px/7px 7px,linear-gradient(#ffc83b,#ffc83b) 9px 9px/7px 7px;background-repeat:no-repeat}
-#start:active{border-color:#2b2f3d var(--hi) var(--hi) #2b2f3d}
-.sep{width:2px;height:28px;border-left:1px solid var(--sh);border-right:1px solid var(--hi)}
-.tk{height:34px;border:2px solid;border-color:var(--hi) var(--sh) var(--sh) var(--hi);border-radius:3px;max-width:170px;padding:0 10px}
-.tk.on{border-color:var(--sh) var(--hi) var(--hi) var(--sh);background:repeating-conic-gradient(#eef0f5 0 25%,#dfe2ea 0 50%) 0 0/4px 4px;font-weight:700}
-#clock{align-self:stretch;display:flex;flex-direction:column;justify-content:center;padding:0 12px;color:var(--ink);line-height:1.15;border:2px solid;border-color:var(--sh) var(--hi) var(--hi) var(--sh);border-radius:3px;font-size:13px}
-#clock small{color:#555b70;font-size:11px}
-#menu{width:250px;padding:3px 3px 3px 38px;border:2px solid;border-color:var(--hi) #2b2f3d #2b2f3d var(--hi);border-radius:6px;backdrop-filter:none;box-shadow:3px 3px 0 rgba(0,0,0,.35)}
-#menu::before{content:"MickOS";position:absolute;left:3px;top:3px;bottom:3px;width:30px;display:flex;align-items:flex-end;justify-content:center;padding-bottom:10px;writing-mode:vertical-rl;transform:rotate(180deg);font-weight:700;font-size:18px;letter-spacing:1px;color:#fff;background:linear-gradient(0deg,var(--ac),#0a1330);border-radius:3px}
-#menu button{color:var(--ink);padding:9px 10px}
-#menu button:hover{background:var(--ac);color:#fff}
-#menu hr{border-top:1px solid var(--sh);border-bottom:1px solid var(--hi);margin:4px 0}
-/* Anmeldefenster */
-.card{width:min(380px,92vw);padding:3px;border:2px solid;border-color:var(--hi) #2b2f3d #2b2f3d var(--hi);border-radius:7px;backdrop-filter:none;box-shadow:1px 1px 0 #2b2f3d,0 20px 50px rgba(0,0,0,.45)}
-.ltb{cursor:default}
-.lbody{display:grid;gap:10px;padding:16px 16px 12px;background:#eef0f5;margin-top:3px;border:2px solid;border-color:var(--sh) var(--hi) var(--hi) var(--sh)}
-.hero{display:flex;gap:14px;align-items:center;margin-bottom:4px}
-.av{width:54px;height:54px;display:grid;place-items:center;font-size:30px;background:#fff;border:2px solid;border-color:var(--sh) var(--hi) var(--hi) var(--sh);border-radius:4px}
-.card h1{font-size:22px;margin:0;color:var(--ink)}.card p{margin:2px 0 0;color:#555b70}
-.card label{display:grid;gap:4px;font-size:12px;color:var(--ink)}
-.card input{width:100%;margin:0;padding:8px 10px;background:#fff;color:#111;border:2px solid;border-color:var(--sh) var(--hi) var(--hi) var(--sh);border-radius:3px}
-.card .btn{padding:9px;font-weight:700;margin-top:4px}
-.err{color:#c0202f;margin:0}
+/* ===== Modern: Glas, runde Ecken, schwebende Taskleiste ===== */
+:root{--ac:#6c8cff;--glass:rgba(24,26,46,.78);--ln:rgba(255,255,255,.09);--mu:#9ba1c4}
+html,body{font-family:"Segoe UI Variable","SF Pro Text",system-ui,sans-serif}
+.wall{background:radial-gradient(55% 50% at 18% 12%,rgba(92,70,230,.75),transparent 62%),radial-gradient(50% 50% at 86% 22%,rgba(18,181,196,.6),transparent 62%),radial-gradient(60% 60% at 60% 100%,rgba(214,70,150,.55),transparent 62%),#0d0f1f}
+#desk{inset:0 0 72px 0}
+.ico{color:#fff;border-radius:14px;text-shadow:0 1px 4px rgba(0,0,0,.6)}
+.ico:hover{background:rgba(255,255,255,.14)}
+.win{padding:0;border:1px solid var(--ln);border-radius:14px;background:rgba(24,26,46,.84);backdrop-filter:blur(26px);box-shadow:0 24px 60px rgba(0,0,0,.5)}
+.win.max{height:calc(100% - 72px)!important;border-radius:0}
+.tb{background:none;padding:9px 12px;border-radius:0}
+.tb b{font-weight:600;font-size:13px}
+.tb button{width:28px;height:28px;border-radius:50%;background:rgba(255,255,255,.07);border:0}
+.tb .x:hover{background:#ff5d6c}
+.body{background:rgba(8,10,24,.35)}
+.bar2 button,.sm,.calc button{border:0;border-radius:9px}
+.calc .op,.btn{background:linear-gradient(135deg,var(--ac),#b58cff);color:#fff}
+.fi{border-radius:10px}
+.win select{background:rgba(255,255,255,.08);border:1px solid var(--ln);border-radius:8px;padding:6px}
+#bar{left:50%;right:auto;transform:translateX(-50%);bottom:10px;width:min(920px,calc(100vw - 20px));height:52px;padding:0 8px;border:1px solid var(--ln);border-radius:18px;background:var(--glass);box-shadow:0 12px 40px rgba(0,0,0,.4)}
+#start{height:38px;padding:0 18px;border-radius:12px;background:linear-gradient(135deg,var(--ac),#b58cff);color:#fff}
+.sep{display:none}
+.tk{height:38px;border:0;border-bottom:2px solid transparent;border-radius:11px;padding:0 12px}
+.tk.on{background:rgba(255,255,255,.16);border-bottom-color:var(--ac)}
+#clock{line-height:1.15;font-size:13px;color:var(--tx)}#clock small{color:var(--mu);font-size:11px}
+#menu{left:max(10px,calc(50% - 460px));bottom:72px;width:260px;padding:8px;border-radius:16px;box-shadow:0 20px 50px rgba(0,0,0,.45)}
+#menu button{border-radius:10px;padding:10px 12px}
+/* Anmeldung */
+#login{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:26px}
+.lk{display:grid;text-align:center;text-shadow:0 2px 12px rgba(0,0,0,.35)}.lk b{font-size:76px;font-weight:200;line-height:1}.lk span{color:#dfe3ff}
+.card{width:min(360px,92vw);padding:28px;border-radius:22px;box-shadow:0 24px 60px rgba(0,0,0,.45)}
+.lbody{display:grid;gap:12px}
+.hero{flex-direction:column;display:flex;align-items:center;text-align:center;gap:10px}
+.av{width:72px;height:72px;display:grid;place-items:center;font-size:34px;border-radius:50%;background:linear-gradient(135deg,var(--ac),#b58cff)}
+.card h1{font-size:22px;margin:0}.card p{margin:2px 0 0}
+.card label{display:grid;gap:5px;font-size:12px;color:var(--mu)}
+.card input{height:42px;margin:0;padding:0 14px;border-radius:11px}
+.card input:focus{border-color:var(--ac);outline:0}
+.card .btn{height:44px;border-radius:11px;margin-top:4px}
+/* Browser */
+.bbar{display:flex;gap:6px;padding:8px;align-items:center;border-bottom:1px solid var(--ln)}
+.bbar button{width:32px;height:32px;border:0;border-radius:50%;background:rgba(255,255,255,.07);font-size:17px;line-height:1}
+.bbar button:hover{background:rgba(255,255,255,.18)}
+.bbar input{flex:1;min-width:0;height:34px;padding:0 15px;border-radius:17px;border:1px solid var(--ln);background:rgba(255,255,255,.07);outline:0}
+.bbar input:focus{border-color:var(--ac)}
+.bview{flex:1;min-height:0;display:flex;flex-direction:column;overflow:auto}
+.bview iframe{flex:1;width:100%;border:0;background:#fff}
+.bhint{padding:5px 12px;font-size:12px;color:var(--mu)}
+.bhome{margin:auto;padding:24px;width:min(540px,100%);text-align:center}
+.bhome h2{font-weight:600;font-size:24px;margin:0 0 16px}
+.bhome input{width:100%;height:46px;padding:0 20px;margin-bottom:24px;border-radius:23px;border:1px solid var(--ln);background:rgba(255,255,255,.07);outline:0}
+.bhome input:focus{border-color:var(--ac)}
+.tiles{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+.tile{width:100px;padding:14px 6px;border:0;border-radius:14px;background:rgba(255,255,255,.07)}
+.tile:hover{background:rgba(255,255,255,.16)}.tile span{display:block;font-size:28px}
 </style></head><body>
 <div class="wall" id="wall"></div>
-<div id="login"><form class="card" id="lf" autocomplete="off">
-<div class="tb ltb"><span>🔒</span><b>MickOS – Anmelden</b></div>
+<div id="login"><div class="lk" id="lk"></div>
+<form class="card" id="lf" autocomplete="off">
 <div class="lbody"><div class="hero"><div class="av">👤</div><div><h1>MickOS</h1><p>Gib deine Zugangsdaten ein.</p></div></div>
 <label>Benutzername<input id="u" autocomplete="username" required></label>
 <label>Passwort<input id="p" type="password" autocomplete="current-password" required></label>
@@ -246,6 +252,27 @@ files:{t:"Dateien",i:"📁",w:520,h:380,run(b,api){
   draw()};
  draw();
 }},
+browser:{t:"Browser",i:"🌐",w:920,h:580,run(b,api){
+ const bar=el("div","bbar",`<button data-a="b" title="Zurück" aria-label="Zurück">‹</button><button data-a="f" title="Vor" aria-label="Vor">›</button><button data-a="r" title="Neu laden" aria-label="Neu laden">⟳</button><button data-a="h" title="Startseite" aria-label="Startseite">⌂</button><input aria-label="Adresse oder Suche" placeholder="Adresse eingeben oder bei Wikipedia suchen" spellcheck="false"><button data-a="x" title="In neuem Tab öffnen" aria-label="In neuem Tab öffnen">↗</button>`);
+ const view=el("div","bview");b.append(bar,view);const inp=$("input",bar);let h=[""],i=0;
+ const norm=v=>{v=v.trim();if(!v)return"";if(/^https?:\/\//i.test(v))return v.replace(/^http:/i,"https:");
+  if(/^[\w-]+(\.[\w-]+)+(\/\S*)?$/.test(v))return"https://"+v;return"https://de.wikipedia.org/w/index.php?search="+encodeURIComponent(v)};
+ const go=v=>{h=h.slice(0,i+1);h.push(norm(v));i++;show()};
+ const home=()=>{const d=el("div","bhome",`<h2>Was möchtest du suchen?</h2><input id="hs" placeholder="Bei Wikipedia suchen" aria-label="Suche"><div class="tiles"></div>`);
+  [["Wikipedia","https://de.wikipedia.org/","📚"],["Wiktionary","https://de.wiktionary.org/","📖"],["Wikivoyage","https://de.wikivoyage.org/","🧳"],["OpenStreetMap","https://www.openstreetmap.org/","🗺️"],["Example","https://example.com/","🔗"]]
+  .forEach(([n,u,e])=>{const x=el("button","tile",`<span>${e}</span>${n}`);x.onclick=()=>go(u);$(".tiles",d).append(x)});
+  $("#hs",d).onkeydown=e=>{if(e.key==="Enter"&&e.target.value.trim())go(e.target.value)};view.append(d)};
+ const show=()=>{const u=h[i];inp.value=u;view.innerHTML="";
+  if(!u){home();api.setTitle("Neuer Tab");return}
+  const f=el("iframe");f.title="Webseite";f.referrerPolicy="no-referrer";f.setAttribute("sandbox","allow-scripts allow-forms allow-same-origin allow-popups");f.src=u;
+  view.append(f,el("div","bhint","Bleibt die Seite leer, erlaubt sie keine Einbettung. Öffne sie dann mit ↗ in einem neuen Tab."));
+  api.setTitle(u.replace("https://","").split("/")[0])};
+ bar.onclick=e=>{const a=e.target.dataset.a;if(!a)return;
+  if(a==="x"){if(h[i])window.open(h[i],"_blank","noopener");return}
+  if(a==="b"&&i>0)i--;else if(a==="f"&&i<h.length-1)i++;else if(a==="h"){h=h.slice(0,i+1);h.push("");i++}
+  show()};
+ inp.onkeydown=e=>{if(e.key==="Enter")go(inp.value)};show();
+}},
 calc:{t:"Rechner",i:"🧮",w:300,h:400,run(b){
  const g=el("div","calc"),d=el("div","d","0");g.append(d);let ex="";
  "C ( ) ÷ 7 8 9 × 4 5 6 − 1 2 3 + 0 . ⌫ =".split(" ").forEach(k=>{
@@ -262,12 +289,12 @@ settings:{t:"Einstellungen",i:"⚙️",w:420,h:360,run(b){
  const s=el("div","set",`<div><b>Akzentfarbe</b><br><br><div id="sw"></div></div>
  <div><b>Hintergrund</b><br><br><select id="wp" aria-label="Hintergrund"><option value="">Dämmerung</option><option value="w2">Ozean</option><option value="w3">Nebel</option><option value="w4">Schiefer</option></select></div>
  <div><button class="sm" id="rs">Dateien zurücksetzen</button> <button class="sm" id="lo">Abmelden</button></div>`);b.append(s);
- ["#3b7be8","#e8843b","#2fae7a","#d9487a","#8a5ad8"].forEach(c=>{const x=el("button","sw");x.style.background=c;x.title=c;x.onclick=()=>{store.set("ac",c);theme()};$("#sw",s).append(x)});
+ ["#6c8cff","#ff9f5a","#3ddc97","#ff6b9a","#b58cff"].forEach(c=>{const x=el("button","sw");x.style.background=c;x.title=c;x.onclick=()=>{store.set("ac",c);theme()};$("#sw",s).append(x)});
  $("#wp",s).value=store.get("wp","");$("#wp",s).onchange=e=>{store.set("wp",e.target.value);theme()};
  $("#rs",s).onclick=()=>{if(confirm("Alle Dateien löschen?")){localStorage.removeItem("mickos.fs");location.reload()}};$("#lo",s).onclick=logout;
 }}
 };
-function theme(){document.documentElement.style.setProperty("--ac",store.get("ac","#3b7be8"));$("#wall").className="wall "+store.get("wp","")}
+function theme(){document.documentElement.style.setProperty("--ac",store.get("ac","#6c8cff"));$("#wall").className="wall "+store.get("wp","")}
 
 /* ---------- Desktop ---------- */
 function boot(){
@@ -284,5 +311,6 @@ function boot(){
  tick();setInterval(tick,15000);openApp("terminal");
 }
 theme();
+const lk=$("#lk");if(lk){const t=()=>{const d=new Date();lk.innerHTML=`<b>${d.toLocaleTimeString("de-DE",{hour:"2-digit",minute:"2-digit"})}</b><span>${d.toLocaleDateString("de-DE",{weekday:"long",day:"numeric",month:"long"})}</span>`};t();setInterval(t,10000)}
 try{if(sessionStorage.getItem("mickos.auth")==="1"&&configured)boot()}catch(e){}
 </script></body></html>
