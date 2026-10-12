@@ -140,6 +140,35 @@ textarea.np{background:rgba(255,255,255,.7);color:var(--tx)}
 .card input:focus{outline:0;border-color:#fff;background:rgba(255,255,255,.32)}
 .card .btn{height:36px;border-radius:18px;background:rgba(255,255,255,.92);color:#1d1d1f;border:0;margin-top:4px;font-weight:600}
 .err{color:#ffd6d6;margin:0;text-align:center;text-shadow:0 1px 4px rgba(0,0,0,.4)}
+
+/* Präzisere macOS-ähnliche Interaktionen */
+html,body,#os,#desk{user-select:none}
+input,textarea,.term{user-select:text}
+button,.ico,.dk{ -webkit-tap-highlight-color:transparent }
+body{cursor:default}
+button,.ico,.dk,.fi .n,.tile,.sm,.bar2 button{cursor:pointer}
+.tb{cursor:grab;touch-action:none}
+.tb:active{cursor:grabbing}
+.win{min-width:260px;min-height:160px;overflow:hidden;will-change:left,top,width,height}
+.win.max{left:0!important;top:0!important;width:100%!important;height:calc(100% - 92px)!important;resize:none}
+.win:not(.max){resize:both}
+.win .body{min-width:0}
+.dk{flex:0 0 52px;cursor:pointer;outline-offset:3px}
+.dk:focus-visible{outline:2px solid #fff}
+.dk.run::after{bottom:-7px}
+#dock{padding:0 12px;max-width:100%;box-sizing:border-box}
+#tasks{max-width:calc(100vw - 24px);overflow:visible;min-width:0}
+@media(max-width:600px){
+ #tasks{gap:5px;padding:6px 7px 8px;border-radius:18px}
+ .dk{width:42px;height:42px;flex-basis:42px;font-size:23px;border-radius:11px}
+ .dk:hover{transform:scale(1.12) translateY(-2px)}
+ .win{min-width:0!important;width:96vw!important;max-width:96vw;left:2vw!important}
+ .win.max{left:0!important;width:100%!important}
+ #mb{padding:0 5px;gap:0}
+ #mb .m{display:none}
+ #appname{padding:1px 5px}
+}
+@media(prefers-reduced-motion:reduce){.dk,.dk::before,.win{animation:none!important;transition:none!important}}
 </style></head><body>
 <div class="wall" id="wall"></div>
 <div id="login"><div class="lk" id="lk"></div>
@@ -199,19 +228,22 @@ function openApp(name,arg){
  const tb=el("div","tb",`<div class="tl"><button class="x" title="Schließen" aria-label="Schließen"></button><button title="Minimieren" aria-label="Minimieren"></button><button title="Vollbild" aria-label="Vollbild"></button></div><b></b>`);
  const [cl,mn,mx]=tb.querySelectorAll("button");const body=el("div","body");w.append(tb,body);$("#desk").append(w);
  
- const api={setTitle(t){$("b",tb).textContent=t},close(){w.remove();wins.delete(w);runState()}};
- const focus=()=>{w.classList.remove("min");w.style.zIndex=++z;wins.forEach(x=>x.classList.remove("act"));w.classList.add("act");$("#appname").textContent=a.t};
+ const api={setTitle(t){$("b",tb).textContent=t},close(){w.remove();wins.delete(w);runState();if(wins.size){const top=[...wins].filter(x=>!x.classList.contains("min")).sort((x,y)=>(+y.style.zIndex)-(+x.style.zIndex))[0];if(top)top.dispatchEvent(new Event("mickos-focus"))}}};
+ const focus=()=>{w.classList.remove("min");w.style.zIndex=++z;wins.forEach(x=>x.classList.remove("act"));w.classList.add("act");$("#appname").textContent=a.t;runState()};
  w.app=name;wins.add(w);runState();api.setTitle(a.t);
  w.addEventListener("pointerdown",focus);
-
- mn.onclick=()=>{w.classList.add("min");w.classList.remove("act")};
- mx.onclick=()=>w.classList.toggle("max");cl.onclick=api.close;
- tb.ondblclick=e=>{if(!e.target.closest("button"))w.classList.toggle("max")};
+ w.addEventListener("mickos-focus",focus);
+ mn.onclick=e=>{e.stopPropagation();w.classList.add("min");w.classList.remove("act");runState()};
+ const toggleMax=()=>{w.classList.toggle("max");focus()};
+ mx.onclick=e=>{e.stopPropagation();toggleMax()};cl.onclick=e=>{e.stopPropagation();api.close()};
+ tb.ondblclick=e=>{if(!e.target.closest("button"))toggleMax()};
  tb.onpointerdown=e=>{
-  if(e.target.closest("button")||w.classList.contains("max"))return;
-  const r=w.getBoundingClientRect(),dx=e.clientX-r.left,dy=e.clientY-r.top;tb.setPointerCapture(e.pointerId);
-  tb.onpointermove=m=>{w.style.left=Math.max(0,Math.min(innerWidth-60,m.clientX-dx))+"px";w.style.top=Math.max(0,Math.min(innerHeight-90,m.clientY-dy))+"px"};
-  tb.onpointerup=()=>{tb.onpointermove=null};
+  if(e.target.closest("button")||w.classList.contains("max")||e.button!==0)return;
+  focus();const r=w.getBoundingClientRect(),dx=e.clientX-r.left,dy=e.clientY-r.top;
+  try{tb.setPointerCapture(e.pointerId)}catch(_){}
+  const move=m=>{if(m.pointerId!==e.pointerId)return;const desk=$("#desk").getBoundingClientRect();const maxLeft=Math.max(0,desk.width-w.offsetWidth+Math.min(w.offsetWidth,80));const maxTop=Math.max(0,desk.height-36);w.style.left=Math.max(0,Math.min(maxLeft,m.clientX-desk.left-dx))+"px";w.style.top=Math.max(0,Math.min(maxTop,m.clientY-desk.top-dy))+"px"};
+  const stop=()=>{tb.removeEventListener("pointermove",move);tb.removeEventListener("pointerup",stop);tb.removeEventListener("pointercancel",stop)};
+  tb.addEventListener("pointermove",move);tb.addEventListener("pointerup",stop);tb.addEventListener("pointercancel",stop);
  };
  focus();a.run(body,api,arg);return w;
 }
@@ -334,7 +366,7 @@ function boot(){
  const ic=$("#icons"),m=$("#menu");
  Object.entries(APPS).forEach(([k,a])=>{
   if(a.hide)return;const dk=el("button","dk",a.i);dk.dataset.app=k;dk.dataset.t=a.t;dk.setAttribute("aria-label",a.t);
-  dk.onclick=()=>{const ws=[...wins].filter(w=>w.app===k);if(ws.length)ws[ws.length-1].dispatchEvent(new Event("pointerdown"));else{openApp(k);dk.classList.add("bn");setTimeout(()=>dk.classList.remove("bn"),1000)}};$("#tasks").append(dk);
+  dk.onclick=()=>{const ws=[...wins].filter(w=>w.app===k);if(ws.length){const w=ws.sort((x,y)=>(+y.style.zIndex)-(+x.style.zIndex))[0];if(w.classList.contains("min")||!w.classList.contains("act"))w.dispatchEvent(new Event("mickos-focus"));else{w.classList.add("min");w.classList.remove("act");runState()}}else{openApp(k);dk.classList.add("bn");setTimeout(()=>dk.classList.remove("bn"),1000)}};$("#tasks").append(dk);
   const i=el("button","ico",`<span>${a.i}</span>${a.t}`);i.ondblclick=()=>openApp(k);
   i.onkeydown=e=>{if(e.key==="Enter")openApp(k)};ic.append(i);
   const mi=el("button","",a.i+"  "+a.t);mi.onclick=()=>{openApp(k);m.hidden=true};m.append(mi)});
