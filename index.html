@@ -65,60 +65,81 @@ textarea.np{flex:1;resize:none;border:0;background:rgba(0,0,0,.25);padding:10px;
 @media (prefers-reduced-motion:no-preference){.win{animation:pop .12s ease-out}@keyframes pop{from{transform:scale(.97);opacity:0}}}
 @media (max-width:600px){.win{width:96vw!important;left:2vw!important}}
 
-/* ===== Modern: Glas, runde Ecken, schwebende Taskleiste ===== */
-:root{--ac:#6c8cff;--glass:rgba(24,26,46,.78);--ln:rgba(255,255,255,.09);--mu:#9ba1c4}
-html,body{font-family:"Segoe UI Variable","SF Pro Text",system-ui,sans-serif}
-.wall{background:radial-gradient(55% 50% at 18% 12%,rgba(92,70,230,.75),transparent 62%),radial-gradient(50% 50% at 86% 22%,rgba(18,181,196,.6),transparent 62%),radial-gradient(60% 60% at 60% 100%,rgba(214,70,150,.55),transparent 62%),#0d0f1f}
-#desk{inset:0 0 72px 0}
-.ico{color:#fff;border-radius:14px;text-shadow:0 1px 4px rgba(0,0,0,.6)}
-.ico:hover{background:rgba(255,255,255,.14)}
-.win{padding:0;border:1px solid var(--ln);border-radius:14px;background:rgba(24,26,46,.84);backdrop-filter:blur(26px);box-shadow:0 24px 60px rgba(0,0,0,.5)}
-.win.max{height:calc(100% - 72px)!important;border-radius:0}
-.tb{background:none;padding:9px 12px;border-radius:0}
-.tb b{font-weight:600;font-size:13px}
-.tb button{width:28px;height:28px;border-radius:50%;background:rgba(255,255,255,.07);border:0}
-.tb .x:hover{background:#ff5d6c}
-.body{background:rgba(8,10,24,.35)}
-.bar2 button,.sm,.calc button{border:0;border-radius:9px}
-.calc .op,.btn{background:linear-gradient(135deg,var(--ac),#b58cff);color:#fff}
-.fi{border-radius:10px}
-.win select{background:rgba(255,255,255,.08);border:1px solid var(--ln);border-radius:8px;padding:6px}
-#bar{left:50%;right:auto;transform:translateX(-50%);bottom:10px;width:min(920px,calc(100vw - 20px));height:52px;padding:0 8px;border:1px solid var(--ln);border-radius:18px;background:var(--glass);box-shadow:0 12px 40px rgba(0,0,0,.4)}
-#start{height:38px;padding:0 18px;border-radius:12px;background:linear-gradient(135deg,var(--ac),#b58cff);color:#fff}
-.sep{display:none}
-.tk{height:38px;border:0;border-bottom:2px solid transparent;border-radius:11px;padding:0 12px}
-.tk.on{background:rgba(255,255,255,.16);border-bottom-color:var(--ac)}
-#clock{line-height:1.15;font-size:13px;color:var(--tx)}#clock small{color:var(--mu);font-size:11px}
-#menu{left:max(10px,calc(50% - 460px));bottom:72px;width:260px;padding:8px;border-radius:16px;box-shadow:0 20px 50px rgba(0,0,0,.45)}
-#menu button{border-radius:10px;padding:10px 12px}
-/* Anmeldung */
-#login{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:26px}
-.lk{display:grid;text-align:center;text-shadow:0 2px 12px rgba(0,0,0,.35)}.lk b{font-size:76px;font-weight:200;line-height:1}.lk span{color:#dfe3ff}
-.card{width:min(360px,92vw);padding:28px;border-radius:22px;box-shadow:0 24px 60px rgba(0,0,0,.45)}
-.lbody{display:grid;gap:12px}
-.hero{flex-direction:column;display:flex;align-items:center;text-align:center;gap:10px}
-.av{width:72px;height:72px;display:grid;place-items:center;font-size:34px;border-radius:50%;background:linear-gradient(135deg,var(--ac),#b58cff)}
-.card h1{font-size:22px;margin:0}.card p{margin:2px 0 0}
-.card label{display:grid;gap:5px;font-size:12px;color:var(--mu)}
-.card input{height:42px;margin:0;padding:0 14px;border-radius:11px}
-.card input:focus{border-color:var(--ac);outline:0}
-.card .btn{height:44px;border-radius:11px;margin-top:4px}
+/* ===== macOS-Stil: Menüleiste oben, Dock unten, Ampel-Buttons, helles Milchglas ===== */
+:root{--ac:#0a84ff;--tx:#1d1d1f;--mu:#6e6e73;--ln:rgba(0,0,0,.1);--glass:rgba(246,246,248,.8)}
+html,body{font:13px/1.45 -apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI Variable","Segoe UI",system-ui,sans-serif;color:var(--tx);-webkit-font-smoothing:antialiased}
+.wall{background:radial-gradient(70% 60% at 78% 18%,rgba(255,184,107,.95),transparent 60%),radial-gradient(80% 70% at 12% 28%,rgba(123,92,255,.9),transparent 65%),radial-gradient(90% 60% at 50% 112%,rgba(255,95,158,.9),transparent 60%),linear-gradient(160deg,#2b2f8f,#5b3fb0 50%,#c0568f)}
+#desk{inset:28px 0 0 0}
+.ico{color:#fff;border-radius:10px;font-size:12px;text-shadow:0 1px 3px rgba(0,0,0,.55)}
+.ico:hover{background:rgba(255,255,255,.16)}
+/* Menüleiste */
+#mb{position:fixed;top:0;left:0;right:0;height:28px;display:flex;align-items:center;gap:2px;padding:0 10px;background:rgba(24,24,34,.3);backdrop-filter:blur(30px) saturate(1.8);color:#fff;z-index:6000;text-shadow:0 1px 2px rgba(0,0,0,.3)}
+#mb #start{background:none;border:0;color:#fff;font-size:15px;padding:1px 9px;border-radius:5px;height:auto}
+#mb #start:hover,#mb .m:hover{background:rgba(255,255,255,.2)}
+#appname{font-weight:700;padding:1px 9px}
+#mb .m{padding:1px 9px;border-radius:5px}
+.sp{flex:1}
+#clock{padding:0 8px;font-weight:500}
+#menu{left:8px;top:30px;bottom:auto;width:230px;padding:5px;border-radius:10px;background:var(--glass);backdrop-filter:blur(30px) saturate(1.8);border:1px solid rgba(255,255,255,.5);box-shadow:0 0 0 .5px rgba(0,0,0,.2),0 14px 40px rgba(0,0,0,.3);color:var(--tx);z-index:6001}
+#menu button{color:var(--tx);padding:6px 10px;border-radius:5px}
+#menu button:hover{background:var(--ac);color:#fff}
+#menu hr{border-top:1px solid var(--ln);margin:5px 6px}
+/* Dock */
+#dock{position:fixed;left:0;right:0;bottom:8px;display:flex;justify-content:center;z-index:5000;pointer-events:none}
+#tasks{flex:none;overflow:visible;pointer-events:auto;display:flex;align-items:flex-end;gap:8px;padding:7px 10px 9px;border-radius:24px;background:rgba(255,255,255,.22);border:1px solid rgba(255,255,255,.4);backdrop-filter:blur(30px) saturate(1.8);box-shadow:0 12px 40px rgba(0,0,0,.3)}
+.dk{position:relative;width:52px;height:52px;border:0;border-radius:13px;font-size:28px;display:grid;place-items:center;transform-origin:50% 100%;transition:transform .2s cubic-bezier(.3,1.6,.5,1);box-shadow:0 3px 8px rgba(0,0,0,.3),inset 0 1px 0 rgba(255,255,255,.45)}
+.dk:hover{transform:scale(1.4) translateY(-3px)}
+.dk:hover+.dk,.dk:has(+.dk:hover){transform:scale(1.16)}
+.dk::before{content:attr(data-t);position:absolute;bottom:calc(100% + 12px);left:50%;transform:translateX(-50%);padding:3px 10px;border-radius:7px;background:rgba(40,40,44,.88);color:#fff;font-size:12px;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .15s}
+.dk:hover::before{opacity:1}
+.dk.run::after{content:"";position:absolute;bottom:-7px;left:50%;width:4px;height:4px;margin-left:-2px;border-radius:50%;background:#fff;box-shadow:0 0 3px rgba(0,0,0,.5)}
+.dk.bn{animation:bn .5s 2}@keyframes bn{40%{transform:translateY(-24px)}}
+[data-app=terminal]{background:linear-gradient(#4a4a4f,#1c1c1e)}[data-app=files]{background:linear-gradient(#5ac8fa,#0a7aff)}[data-app=browser]{background:linear-gradient(#e8f4ff,#8cc8ff)}
+[data-app=notepad]{background:linear-gradient(#fff3a8,#ffd60a)}[data-app=calc]{background:linear-gradient(#ffb340,#ff7a00)}[data-app=settings]{background:linear-gradient(#c7c9cf,#7d8087)}
+/* Fenster */
+.win{padding:0;border:1px solid rgba(255,255,255,.55);border-radius:12px;background:var(--glass);backdrop-filter:blur(34px) saturate(1.8);box-shadow:0 0 0 .5px rgba(0,0,0,.28),0 22px 60px rgba(0,0,0,.35);color:var(--tx)}
+.win.max{height:calc(100% - 92px)!important;border-radius:0}
+.tb{height:38px;padding:0 14px;gap:0;background:rgba(255,255,255,.4);border-bottom:1px solid var(--ln);border-radius:0;color:var(--tx);cursor:default}
+.tl{display:flex;gap:8px;width:56px}
+.tl button{width:12px;height:12px;padding:0;border:0;border-radius:50%;font-size:9px;line-height:12px;color:transparent;box-shadow:inset 0 0 0 .5px rgba(0,0,0,.2)}
+.tl .x{background:#ff5f57}.tl button:nth-child(2){background:#febc2e}.tl button:nth-child(3){background:#28c840}
+.tl:hover .x::after{content:"✕";color:rgba(70,0,0,.7)}.tl:hover button:nth-child(2)::after{content:"–";color:rgba(70,45,0,.7)}.tl:hover button:nth-child(3)::after{content:"+";color:rgba(0,60,0,.7)}
+.win:not(.act) .tl button{background:#cfcfd4}
+.tb b{text-align:center;font-weight:600;font-size:13px;padding-right:56px}
+.tb .x:hover{background:#ff5f57}
+.body{background:rgba(255,255,255,.5)}
+.bar2,.bbar{background:rgba(255,255,255,.45);border-bottom:1px solid var(--ln)}
+.bar2 button,.sm,.calc button,.tile{background:#fff;color:var(--tx);border:1px solid var(--ln);border-radius:7px;padding:4px 12px;box-shadow:0 1px 1px rgba(0,0,0,.08)}
+.bar2 button:hover,.sm:hover{background:#f2f2f6}
+.fi{border-radius:7px}.fi:hover{background:rgba(10,132,255,.14)}
+.th{width:28px;height:28px;object-fit:cover;border-radius:5px}
+.term{background:rgba(28,28,30,.93);color:#e5e5e7}.term .pr{color:#32d74b}
+textarea.np{background:rgba(255,255,255,.7);color:var(--tx)}
+.calc{background:#2c2c2e;gap:1px}.calc .d{background:#1c1c1e;color:#fff;border-radius:0;font-weight:200;font-size:36px}
+.calc button{background:#505054;color:#fff;border:0;border-radius:0;box-shadow:none;font-size:20px}.calc button:hover{background:#6a6a6e}
+.calc .op{background:#ff9f0a}.calc .op:hover{background:#ffb340}
+.win select{background:#fff;color:var(--tx);border:1px solid var(--ln);border-radius:7px;padding:5px}
+.sw{border:2px solid #fff;box-shadow:0 0 0 1px var(--ln)}
+.btn{background:var(--ac);color:#fff}
+.pv{flex:1;display:grid;place-items:center;overflow:auto;background:rgba(0,0,0,.07);min-height:0}.pv img{max-width:100%;max-height:100%;object-fit:contain}
 /* Browser */
-.bbar{display:flex;gap:6px;padding:8px;align-items:center;border-bottom:1px solid var(--ln)}
-.bbar button{width:32px;height:32px;border:0;border-radius:50%;background:rgba(255,255,255,.07);font-size:17px;line-height:1}
-.bbar button:hover{background:rgba(255,255,255,.18)}
-.bbar input{flex:1;min-width:0;height:34px;padding:0 15px;border-radius:17px;border:1px solid var(--ln);background:rgba(255,255,255,.07);outline:0}
-.bbar input:focus{border-color:var(--ac)}
-.bview{flex:1;min-height:0;display:flex;flex-direction:column;overflow:auto}
-.bview iframe{flex:1;width:100%;border:0;background:#fff}
-.bhint{padding:5px 12px;font-size:12px;color:var(--mu)}
-.bhome{margin:auto;padding:24px;width:min(540px,100%);text-align:center}
-.bhome h2{font-weight:600;font-size:24px;margin:0 0 16px}
-.bhome input{width:100%;height:46px;padding:0 20px;margin-bottom:24px;border-radius:23px;border:1px solid var(--ln);background:rgba(255,255,255,.07);outline:0}
-.bhome input:focus{border-color:var(--ac)}
-.tiles{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
-.tile{width:100px;padding:14px 6px;border:0;border-radius:14px;background:rgba(255,255,255,.07)}
-.tile:hover{background:rgba(255,255,255,.16)}.tile span{display:block;font-size:28px}
+.bbar button{background:rgba(0,0,0,.05);color:var(--tx)}.bbar button:hover{background:rgba(0,0,0,.12)}
+.bbar input,.bhome input{background:rgba(0,0,0,.06);border:1px solid transparent;color:var(--tx)}
+.bbar input:focus,.bhome input:focus{border-color:var(--ac);background:#fff}
+.tile{padding:14px 6px}.tile:hover{background:#f2f2f6}
+/* Anmeldung */
+#login{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:34px;background:rgba(0,0,0,.14);backdrop-filter:blur(14px)}
+.lk{display:grid;text-align:center;color:#fff;text-shadow:0 2px 14px rgba(0,0,0,.3)}.lk b{font-size:84px;font-weight:200;line-height:1;letter-spacing:-1px}.lk span{font-size:18px;font-weight:500;opacity:.9}
+.card{width:260px;padding:0;background:none;border:0;box-shadow:none;backdrop-filter:none;color:#fff}
+.lbody{display:grid;gap:10px}
+.hero{display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center;margin-bottom:6px}
+.av{width:88px;height:88px;display:grid;place-items:center;font-size:44px;border-radius:50%;background:rgba(255,255,255,.28);border:1px solid rgba(255,255,255,.5);backdrop-filter:blur(10px)}
+.card h1{font-size:20px;margin:0;font-weight:600;text-shadow:0 1px 6px rgba(0,0,0,.3)}.card p{margin:0;font-size:12px;color:rgba(255,255,255,.85)}
+.card label{display:grid;gap:4px;font-size:11px;color:rgba(255,255,255,.85)}
+.card input{height:36px;margin:0;padding:0 16px;border-radius:18px;background:rgba(255,255,255,.22);color:#fff;border:1px solid rgba(255,255,255,.4);backdrop-filter:blur(10px)}
+.card input:focus{outline:0;border-color:#fff;background:rgba(255,255,255,.32)}
+.card .btn{height:36px;border-radius:18px;background:rgba(255,255,255,.92);color:#1d1d1f;border:0;margin-top:4px;font-weight:600}
+.err{color:#ffd6d6;margin:0;text-align:center;text-shadow:0 1px 4px rgba(0,0,0,.4)}
 </style></head><body>
 <div class="wall" id="wall"></div>
 <div id="login"><div class="lk" id="lk"></div>
@@ -129,7 +150,8 @@ html,body{font-family:"Segoe UI Variable","SF Pro Text",system-ui,sans-serif}
 <button class="btn" id="lb">Anmelden</button><div class="err" id="le" role="alert"></div></div></form></div>
 <div id="os" hidden>
 <div id="desk"><div class="icons" id="icons"></div></div>
-<div id="bar"><button id="start" aria-haspopup="true">Start</button><span class="sep"></span><div id="tasks"></div><div id="clock"></div></div>
+<div id="mb"><button id="start" aria-haspopup="true" aria-label="Menü">◆</button><b id="appname">Finder</b><span class="m">Datei</span><span class="m">Bearbeiten</span><span class="m">Ansicht</span><span class="m">Fenster</span><span class="sp"></span><span id="clock"></span></div>
+<div id="dock"><div id="tasks"></div></div>
 <div id="menu" hidden></div>
 </div>
 <script>
@@ -139,7 +161,10 @@ const $=(s,e=document)=>e.querySelector(s);
 const el=(t,c,h)=>{const e=document.createElement(t);if(c)e.className=c;if(h!=null)e.innerHTML=h;return e};
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const store={get(k,d){try{const v=localStorage.getItem("mickos."+k);return v?JSON.parse(v):d}catch(e){return d}},
- set(k,v){try{localStorage.setItem("mickos."+k,JSON.stringify(v))}catch(e){}}};
+ set(k,v){try{localStorage.setItem("mickos."+k,JSON.stringify(v));return true}catch(e){return false}}};
+const isImg=v=>typeof v==="string"&&v.startsWith("data:image");
+function readImg(f,max,cb){const r=new FileReader();r.onload=()=>{const im=new Image();im.onload=()=>{const k=Math.min(1,max/Math.max(im.width,im.height)),c=document.createElement("canvas");c.width=Math.round(im.width*k);c.height=Math.round(im.height*k);c.getContext("2d").drawImage(im,0,0,c.width,c.height);cb(c.toDataURL("image/jpeg",.82))};im.onerror=()=>alert("Das Bild konnte nicht gelesen werden.");im.src=r.result};r.readAsDataURL(f)}
+function pickImg(max,cb){const i=document.createElement("input");i.type="file";i.accept="image/*";i.onchange=()=>{const f=i.files[0];if(f)readImg(f,max,u=>cb(u,f.name.replace(/\.[^.]+$/,"")+".jpg"))};i.click()}
 
 /* ---------- Anmeldung (PBKDF2, Hash wird beim Deploy aus GitHub Secrets erzeugt) ---------- */
 const enc=new TextEncoder();
@@ -167,19 +192,19 @@ const nodeAt=p=>p.reduce((n,s)=>n&&typeof n==="object"?n[s]:undefined,FS);
 const isDir=n=>n&&typeof n==="object";
 
 /* ---------- Fenster-Manager ---------- */
-let z=10,count=0;const wins=new Set();
+let z=10,count=0;const runState=()=>document.querySelectorAll(".dk").forEach(d=>d.classList.toggle("run",[...wins].some(w=>w.app===d.dataset.app)));const wins=new Set();
 function openApp(name,arg){
  const a=APPS[name];if(!a)return;
  const w=el("div","win");w.style.cssText=`left:${50+(count%8)*28}px;top:${30+(count%8)*28}px;width:${a.w}px;height:${a.h}px`;count++;
- const tb=el("div","tb",`<span>${a.i}</span><b></b><button title="Minimieren">–</button><button title="Maximieren">□</button><button class="x" title="Schließen">✕</button>`);
- const [mn,mx,cl]=tb.querySelectorAll("button");const body=el("div","body");w.append(tb,body);$("#desk").append(w);
- const tk=el("button","tk",a.i+" "+a.t);$("#tasks").append(tk);
- const api={setTitle(t){$("b",tb).textContent=t;tk.textContent=a.i+" "+t},close(){w.remove();tk.remove();wins.delete(w)}};
- const focus=()=>{w.classList.remove("min");w.style.zIndex=++z;wins.forEach(x=>x.tk.classList.remove("on"));tk.classList.add("on")};
- w.tk=tk;wins.add(w);api.setTitle(a.t);
+ const tb=el("div","tb",`<div class="tl"><button class="x" title="Schließen" aria-label="Schließen"></button><button title="Minimieren" aria-label="Minimieren"></button><button title="Vollbild" aria-label="Vollbild"></button></div><b></b>`);
+ const [cl,mn,mx]=tb.querySelectorAll("button");const body=el("div","body");w.append(tb,body);$("#desk").append(w);
+ 
+ const api={setTitle(t){$("b",tb).textContent=t},close(){w.remove();wins.delete(w);runState()}};
+ const focus=()=>{w.classList.remove("min");w.style.zIndex=++z;wins.forEach(x=>x.classList.remove("act"));w.classList.add("act");$("#appname").textContent=a.t};
+ w.app=name;wins.add(w);runState();api.setTitle(a.t);
  w.addEventListener("pointerdown",focus);
- tk.onclick=()=>{if(tk.classList.contains("on")&&!w.classList.contains("min")){w.classList.add("min");tk.classList.remove("on")}else focus()};
- mn.onclick=()=>{w.classList.add("min");tk.classList.remove("on")};
+
+ mn.onclick=()=>{w.classList.add("min");w.classList.remove("act")};
  mx.onclick=()=>w.classList.toggle("max");cl.onclick=api.close;
  tb.ondblclick=e=>{if(!e.target.closest("button"))w.classList.toggle("max")};
  tb.onpointerdown=e=>{
@@ -207,7 +232,7 @@ terminal:{t:"Terminal",i:"⌨️",w:620,h:380,run(b,api){
   ls:a=>{const n=nodeAt(a[0]?res(a[0]):cwd);isDir(n)?out(Object.keys(n).map(k=>isDir(n[k])?k+"/":k).join("  ")||"(leer)"):out("Kein Ordner.")},
   cd:a=>{const p=res(a[0]||"/home");isDir(nodeAt(p))?(cwd=p,upd()):out("Ordner nicht gefunden.")},
   pwd:()=>out(path()),
-  cat:a=>{const n=nodeAt(res(a[0]||""));typeof n==="string"?out(n):out("Datei nicht gefunden.")},
+  cat:a=>{const n=nodeAt(res(a[0]||""));typeof n==="string"?out(isImg(n)?"[Bild]":n):out("Datei nicht gefunden.")},
   mkdir:a=>{const p=res(a[0]||""),n=p.pop(),d=nodeAt(p);if(isDir(d)&&n&&!(n in d)){d[n]={};saveFS()}else out("Nicht möglich.")},
   touch:a=>{const p=res(a[0]||""),n=p.pop(),d=nodeAt(p);if(isDir(d)&&n){d[n]=d[n]??"";saveFS()}else out("Nicht möglich.")},
   rm:a=>{const p=res(a[0]||""),n=p.pop(),d=nodeAt(p);if(isDir(d)&&n in d){delete d[n];saveFS()}else out("Nicht gefunden.")},
@@ -238,15 +263,16 @@ notepad:{t:"Notizen",i:"📝",w:520,h:380,run(b,api,path){
 files:{t:"Dateien",i:"📁",w:520,h:380,run(b,api){
  let cwd=["home"];const bar=el("div","bar2"),list=el("div","fl");b.append(bar,list);
  const draw=()=>{
-  api.setTitle("/"+cwd.join("/"));bar.innerHTML=`<button data-a="up">↑ Hoch</button><button data-a="nf">+ Ordner</button><button data-a="nt">+ Datei</button>`;
+  api.setTitle("/"+cwd.join("/"));bar.innerHTML=`<button data-a="up">↑ Hoch</button><button data-a="nf">+ Ordner</button><button data-a="nt">+ Datei</button><button data-a="im">🖼 Bild hochladen</button>`;
   const d=nodeAt(cwd);list.innerHTML="";
   const ks=Object.keys(d).sort((a,c)=>isDir(d[c])-isDir(d[a])||a.localeCompare(c));
   if(!ks.length)list.append(el("div","fi","<span style='color:var(--mu)'>Dieser Ordner ist leer. Lege oben eine Datei oder einen Ordner an.</span>"));
-  ks.forEach(k=>{const r=el("div","fi",`<span>${isDir(d[k])?"📁":"📄"}</span><span class="n">${esc(k)}</span><button class="sm" title="Löschen">🗑</button>`);
-   $(".n",r).onclick=()=>isDir(d[k])?(cwd=[...cwd,k],draw()):openApp("notepad",[...cwd,k]);
+  ks.forEach(k=>{const r=el("div","fi",`<span>${isDir(d[k])?"📁":isImg(d[k])?`<img class="th" alt="" src="${d[k]}">`:"📄"}</span><span class="n">${esc(k)}</span><button class="sm" title="Löschen">🗑</button>`);
+   $(".n",r).onclick=()=>isDir(d[k])?(cwd=[...cwd,k],draw()):openApp(isImg(d[k])?"preview":"notepad",[...cwd,k]);
    $("button",r).onclick=()=>{if(confirm(k+" löschen?")){delete d[k];saveFS();draw()}};list.append(r)});
  };
  bar.onclick=e=>{const a=e.target.dataset.a;if(!a)return;
+  if(a==="im"){pickImg(1600,(u,nm)=>{const d=nodeAt(cwd);let n=nm,c=1;while(n in d)n=nm.replace(/\.jpg$/,"")+"-"+(++c)+".jpg";d[n]=u;if(!saveFS()){delete d[n];alert("Speicher voll. Lösche Bilder oder wähle ein kleineres.")}draw()});return}
   if(a==="up"&&cwd.length>1)cwd=cwd.slice(0,-1);
   else if(a==="nf"||a==="nt"){const n=prompt("Name:");if(n&&!/\//.test(n)){const d=nodeAt(cwd);if(!(n in d)){d[n]=a==="nf"?{}:"";saveFS()}}}
   draw()};
@@ -273,6 +299,10 @@ browser:{t:"Browser",i:"🌐",w:920,h:580,run(b,api){
   show()};
  inp.onkeydown=e=>{if(e.key==="Enter")go(inp.value)};show();
 }},
+preview:{t:"Vorschau",i:"🖼️",hide:true,w:640,h:460,run(b,api,p){const src=nodeAt(p);api.setTitle(p[p.length-1]);
+ const bar=el("div","bar2",`<button>Als Hintergrund</button>`),v=el("div","pv"),im=el("img");im.src=src;im.alt=p[p.length-1];v.append(im);b.append(bar,v);
+ $("button",bar).onclick=()=>{if(!store.set("wpimg",src))alert("Speicher voll.");theme()};
+}},
 calc:{t:"Rechner",i:"🧮",w:300,h:400,run(b){
  const g=el("div","calc"),d=el("div","d","0");g.append(d);let ex="";
  "C ( ) ÷ 7 8 9 × 4 5 6 − 1 2 3 + 0 . ⌫ =".split(" ").forEach(k=>{
@@ -288,27 +318,31 @@ calc:{t:"Rechner",i:"🧮",w:300,h:400,run(b){
 settings:{t:"Einstellungen",i:"⚙️",w:420,h:360,run(b){
  const s=el("div","set",`<div><b>Akzentfarbe</b><br><br><div id="sw"></div></div>
  <div><b>Hintergrund</b><br><br><select id="wp" aria-label="Hintergrund"><option value="">Dämmerung</option><option value="w2">Ozean</option><option value="w3">Nebel</option><option value="w4">Schiefer</option></select></div>
+ <div><b>Eigenes Hintergrundbild</b><br><br><button class="sm" id="wu">Bild auswählen…</button> <button class="sm" id="wr">Zurücksetzen</button></div>
  <div><button class="sm" id="rs">Dateien zurücksetzen</button> <button class="sm" id="lo">Abmelden</button></div>`);b.append(s);
- ["#6c8cff","#ff9f5a","#3ddc97","#ff6b9a","#b58cff"].forEach(c=>{const x=el("button","sw");x.style.background=c;x.title=c;x.onclick=()=>{store.set("ac",c);theme()};$("#sw",s).append(x)});
- $("#wp",s).value=store.get("wp","");$("#wp",s).onchange=e=>{store.set("wp",e.target.value);theme()};
+ ["#0a84ff","#ff9f0a","#30d158","#ff375f","#bf5af2"].forEach(c=>{const x=el("button","sw");x.style.background=c;x.title=c;x.onclick=()=>{store.set("ac",c);theme()};$("#sw",s).append(x)});
+ $("#wp",s).value=store.get("wp","");$("#wp",s).onchange=e=>{try{localStorage.removeItem("mickos.wpimg")}catch(x){}store.set("wp",e.target.value);theme()};
  $("#rs",s).onclick=()=>{if(confirm("Alle Dateien löschen?")){localStorage.removeItem("mickos.fs");location.reload()}};$("#lo",s).onclick=logout;
+ $("#wu",s).onclick=()=>pickImg(1920,u=>{if(!store.set("wpimg",u))alert("Speicher voll.");theme()});$("#wr",s).onclick=()=>{try{localStorage.removeItem("mickos.wpimg")}catch(e){}theme()};
 }}
 };
-function theme(){document.documentElement.style.setProperty("--ac",store.get("ac","#6c8cff"));$("#wall").className="wall "+store.get("wp","")}
+function theme(){document.documentElement.style.setProperty("--ac",store.get("ac","#0a84ff"));const w=$("#wall"),i=store.get("wpimg","");w.className="wall "+store.get("wp","");w.style.backgroundImage=i?`url("${i}")`:"";w.style.backgroundSize=i?"cover":"";w.style.backgroundPosition="center"}
 
 /* ---------- Desktop ---------- */
 function boot(){
  $("#login").remove();$("#os").hidden=false;theme();
  const ic=$("#icons"),m=$("#menu");
  Object.entries(APPS).forEach(([k,a])=>{
+  if(a.hide)return;const dk=el("button","dk",a.i);dk.dataset.app=k;dk.dataset.t=a.t;dk.setAttribute("aria-label",a.t);
+  dk.onclick=()=>{const ws=[...wins].filter(w=>w.app===k);if(ws.length)ws[ws.length-1].dispatchEvent(new Event("pointerdown"));else{openApp(k);dk.classList.add("bn");setTimeout(()=>dk.classList.remove("bn"),1000)}};$("#tasks").append(dk);
   const i=el("button","ico",`<span>${a.i}</span>${a.t}`);i.ondblclick=()=>openApp(k);
   i.onkeydown=e=>{if(e.key==="Enter")openApp(k)};ic.append(i);
   const mi=el("button","",a.i+"  "+a.t);mi.onclick=()=>{openApp(k);m.hidden=true};m.append(mi)});
  m.append(el("hr"));const lo=el("button","","🚪  Abmelden");lo.onclick=logout;m.append(lo);
  $("#start").onclick=e=>{e.stopPropagation();m.hidden=!m.hidden};
  document.addEventListener("pointerdown",e=>{if(!e.target.closest("#menu,#start"))m.hidden=true});
- const tick=()=>$("#clock").innerHTML=new Date().toLocaleTimeString("de-DE",{hour:"2-digit",minute:"2-digit"})+"<br><small>"+new Date().toLocaleDateString("de-DE")+"</small>";
- tick();setInterval(tick,15000);openApp("terminal");
+ const tick=()=>{const d=new Date();$("#clock").textContent=d.toLocaleDateString("de-DE",{weekday:"short",day:"numeric",month:"short"})+"  "+d.toLocaleTimeString("de-DE",{hour:"2-digit",minute:"2-digit"})};
+  tick();setInterval(tick,15000);openApp("terminal");
 }
 theme();
 const lk=$("#lk");if(lk){const t=()=>{const d=new Date();lk.innerHTML=`<b>${d.toLocaleTimeString("de-DE",{hour:"2-digit",minute:"2-digit"})}</b><span>${d.toLocaleDateString("de-DE",{weekday:"long",day:"numeric",month:"long"})}</span>`};t();setInterval(t,10000)}
